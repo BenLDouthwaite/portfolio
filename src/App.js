@@ -8,15 +8,18 @@ import Nav from "react-bootstrap/Nav";
 function App() {
   return (
     <div className="App container">
-      <Navbar fluid collapseOnSelect>
+      <Navbar collapseOnSelect>
         <Navbar.Brand as={Link} to="/">
           BLD
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <Nav pullRight>
+          <Nav>
             <Nav.Link as={Link} to="/sandbox">
               sandbox
+            </Nav.Link>
+            <Nav.Link as={Link} to="/canvas">
+              canvas
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
