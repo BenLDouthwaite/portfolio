@@ -1,5 +1,6 @@
 import * as React from "react";
 import Square from "./Square";
+import Circle from "./Circle";
 
 class SquareCanvas extends React.Component {
   constructor(props) {
@@ -19,7 +20,12 @@ class SquareCanvas extends React.Component {
   }
 
   render() {
-    return <Square rotation={this.state.rotation} width={200} height={200} />;
+    return (
+      <>
+        <Square rotation={this.state.rotation} width={200} height={200} />
+        {/*<Circle />*/}
+      </>
+    );
   }
 }
 

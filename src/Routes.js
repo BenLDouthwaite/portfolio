@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./containers/Home";
 import Sandbox from "./containers/Sandbox";
-import Canvas from "./containers/Canvas";
+import Canvas from "./containers/CanvasPage";
 
 export default function Routes() {
   return (

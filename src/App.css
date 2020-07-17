@@ -5,3 +5,7 @@
 .App .navbar-brand {
   font-weight: bold;
 }
+
+.page {
+  height: 80vh;
+}
