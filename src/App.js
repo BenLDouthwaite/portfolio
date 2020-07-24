@@ -21,6 +21,9 @@ function App() {
             <Nav.Link as={Link} to="/canvas">
               canvas
             </Nav.Link>
+            <Nav.Link as={Link} to="/tree">
+              tree
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

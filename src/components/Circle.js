@@ -1,66 +1,29 @@
-import React, { useEffect } from "react";
-import { useRef } from "react";
+import { useCanvas } from "./Canvas";
 
-const getPixelRatio = (context) => {
-  var backingStore =
-    context.backingStorePixelRatio ||
-    context.webkitBackingStorePixelRatio ||
-    context.mozBackingStorePixelRatio ||
-    context.msBackingStorePixelRatio ||
-    context.oBackingStorePixelRatio ||
-    context.backingStorePixelRatio ||
-    1;
+export const Circle = ({ x = 300, y = 100, size = 40, text = "0" }) => {
+  const context = useCanvas();
 
-  return (window.devicePixelRatio || 1) / backingStore;
+  if (context !== null) {
+    // Text
+    context.fillStyle = "rgba(0, 0, 0, 1)";
+    const font = "bold " + 50 + "px Arial";
+    const width = context.measureText(text).width;
+    // TODO This is an approximation, how to improve?
+    const height = context.measureText("M").width;
+    context.font = font;
+    context.fillText(text, x - width / 2, y + height / 3);
+
+    // Circle
+    context.fillStyle = "rgba(255, 255, 255, 1)";
+    context.strokeStyle = "rgba(20, 10, 50, 1)";
+    context.beginPath();
+    context.arc(x, y, size, 0, Math.PI * 2);
+
+    context.closePath();
+    context.fill(); // colour fill
+    context.lineWidth = 5;
+    context.stroke(); // outline
+  }
+
+  return null;
 };
-
-const Circle = () => {
-  console.log("clcle");
-
-  let ref = useRef();
-
-  useEffect(() => {
-    console.log("use effect");
-
-    let canvas = ref.current;
-    let ctx = canvas.getContext("2d");
-
-    let ratio = getPixelRatio(ctx);
-    let width = getComputedStyle(canvas).getPropertyValue("width").slice(0, -2);
-    let height = getComputedStyle(canvas)
-      .getPropertyValue("height")
-      .slice(0, -2);
-
-    canvas.width = width * ratio;
-    canvas.height = height * ratio;
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-
-    let requestId,
-      i = 0,
-      rad = 0;
-
-    const render = () => {
-      rad = (canvas.width / 2) * Math.abs(Math.cos(i));
-      // console.log(rad);
-      ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, rad, 0, 2 * Math.PI);
-      ctx.fill();
-      i += 0.05;
-      requestId = requestAnimationFrame(render);
-      // console.log(requestId);
-    };
-
-    render();
-
-    return () => {
-      cancelAnimationFrame(requestId);
-    };
-  });
-
-  console.log("pre render");
-
-  return <canvas ref={ref} style={{ width: "100px", height: "100px" }} />;
-};
-
-export default Circle;

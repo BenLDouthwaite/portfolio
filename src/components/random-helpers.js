@@ -6,7 +6,7 @@ const getPositionBetween = (min, max, variance) =>
 
 const hueVariance = 40;
 
-const getRandomColor = (baseHue, hueVariance) => {
+export const getRandomColor = (baseHue, hueVariance) => {
   const hue = random(baseHue - hueVariance, baseHue + hueVariance);
   const saturation = random(4, 55);
 
@@ -39,6 +39,23 @@ export const getRandomHexagon = ({ baseSize, baseHue, x, y }) => {
     initialRotation: random(0, 90),
     rotationSpeed: random(-0.1, 0.1),
   };
+};
+
+export const getHexagon = ({ width, height }) => {
+  const smallerSize = Math.min(width, height);
+
+  console.log("W:", width, ". H:", height);
+
+  return [
+    {
+      x: 400,
+      y: 100,
+      size: 400,
+      color: getRandomColor(200, 300),
+      initialRotation: random(0, 90),
+      rotationSpeed: 1,
+    },
+  ];
 };
 
 export const getHexagonsToFillZone = ({ width, height }) => {

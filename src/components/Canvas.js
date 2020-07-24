@@ -45,6 +45,9 @@ export const Canvas = ({ height, width, dpr, isAnimating, children }) => {
   // we need to clear the whole canvas before drawing the children
   if (context !== null) {
     context.clearRect(0, 0, actualWidth, actualHeight);
+
+    // context.fillStyle = "rgba(0, 0, 0, 0.2)";
+    // context.fillRect(0, 0, actualWidth, actualHeight);
   }
 
   return (

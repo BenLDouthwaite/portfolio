@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./containers/Home";
 import Sandbox from "./containers/Sandbox";
 import Canvas from "./containers/CanvasPage";
+import Tree from "./containers/TreePage";
 
 export default function Routes() {
   return (
@@ -15,6 +16,9 @@ export default function Routes() {
       </Route>
       <Route exact path="/canvas">
         <Canvas />
+      </Route>
+      <Route exact path="/tree">
+        <Tree />
       </Route>
     </Switch>
   );
