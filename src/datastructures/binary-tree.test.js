@@ -11,6 +11,8 @@ describe("Binary Tree", () => {
     bt.insert(12);
     bt.insert(16);
 
+    bt.traversal();
+
     expect(bt).toEqual({
       root: {
         value: 10,

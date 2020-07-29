@@ -27,6 +27,25 @@ class BinaryTree {
       }
     }
   }
+
+  traversal(action = (value) => console.log(value)) {
+    console.log("Begin Traversal");
+    if (action) {
+    }
+    this.traverseNode(this.root, action);
+  }
+
+  traverseNode(node, action) {
+    if (node != null) {
+      if (node.left != null) {
+        this.traverseNode(node.left, action);
+      }
+      action(node.value);
+      if (node.right != null) {
+        this.traverseNode(node.right, action);
+      }
+    }
+  }
 }
 
 class Node {
