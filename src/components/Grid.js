@@ -8,8 +8,8 @@ export const Grid = ({}) => {
   if (context !== null) {
     // Reference coordinates
     context.fillStyle = "green";
-    for (var i = 0; i < 1000; i += 50) {
-      for (var j = 0; j < 1000; j += 50) {
+    for (var i = 0; i < 1500; i += 50) {
+      for (var j = 0; j < 1200; j += 50) {
         context.fillRect(i, j, 2, 2);
       }
     }

@@ -5,35 +5,21 @@ import { Circle } from "../components/Circle";
 import { Grid } from "../components/Grid";
 import { Line } from "../components/Line";
 import BinaryTree from "../datastructures/binary-tree";
+import { Button, FormControl, InputGroup } from "react-bootstrap";
 
 const Tree = () => {
-  function initBtree() {
+  function initBtree(
+    values = [10, 6, 4, 2, 3, 1, 8, 9, 14, 12, 13, 18, 17, 16, 15]
+  ) {
     const btree = new BinaryTree();
-    btree.insert(10);
-    btree.insert(6);
-    btree.insert(4);
-    btree.insert(2);
-    btree.insert(3);
-    btree.insert(1);
-    btree.insert(8);
-    btree.insert(9);
-    btree.insert(14);
-    btree.insert(12);
-    btree.insert(13);
-    btree.insert(18);
-    btree.insert(17);
-    btree.insert(16);
-    btree.insert(15);
-    // btree.traversal();
+    values.forEach((value) => btree.insert(value));
     return btree;
   }
 
   const [btree, setBtree] = useState(initBtree());
-
+  const [nodesString, setNodesString] = useState("");
   const [ref, { width, height, dpr }] = useDimensions();
-
   console.log(width, height, dpr);
-  // console.log("BTREE", btree);
 
   function addNode(nodes, node, x, y, px, py, xos) {
     xos = xos / 2;
@@ -50,9 +36,8 @@ const Tree = () => {
       addNode(nodes, node.right, x + xos, y + 100, x, y, xos);
     }
   }
-  // Custom traversal to map to nodes.
-  const nodes = [];
 
+  const nodes = [];
   if (btree.root !== null) {
     addNode(nodes, btree.root, width / 2, 100, null, null, width / 2);
   }
@@ -62,10 +47,37 @@ const Tree = () => {
       {width === undefined || height === undefined || dpr === undefined ? (
         <div>{"🤔"}</div>
       ) : (
-        <Canvas width={width} height={height} dpr={dpr} isAnimating={true}>
-          <Grid />
-          {nodes}
-        </Canvas>
+        <>
+          <InputGroup className="mb-3">
+            <FormControl
+              placeholder="Node values to generate tree"
+              aria-label="Node values to generate tree"
+              value={nodesString}
+              onChange={(event) => {
+                const nodesString = event.target.value;
+                setNodesString(nodesString);
+              }}
+            />
+            <InputGroup.Append>
+              <Button
+                variant="outline-secondary"
+                onClick={() => {
+                  const nodeValues = nodesString
+                    .split(",")
+                    .map((value) => value.trim())
+                    .map((value) => parseInt(value, 10));
+                  setBtree(initBtree(nodeValues));
+                }}
+              >
+                Generate
+              </Button>
+            </InputGroup.Append>
+          </InputGroup>
+          <Canvas width={width} height={height} dpr={dpr} isAnimating={true}>
+            {/*<Grid />*/}
+            {nodes}
+          </Canvas>
+        </>
       )}
     </div>
   );
