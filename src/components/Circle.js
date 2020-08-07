@@ -6,7 +6,7 @@ export const Circle = ({ x = 300, y = 100, size = 40, text = "0" }) => {
   if (context !== null) {
     // Text
     context.fillStyle = "rgba(0, 0, 0, 1)";
-    const font = "bold " + 50 + "px Arial";
+    const font = "bold " + size + "px Arial";
     const width = context.measureText(text).width;
     // TODO This is an approximation, how to improve?
     const height = context.measureText("M").width;

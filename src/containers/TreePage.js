@@ -18,22 +18,24 @@ const Tree = () => {
 
   const [btree, setBtree] = useState(initBtree());
   const [nodesString, setNodesString] = useState("");
+  const [yOffset, setYOffset] = useState(100);
+
   const [ref, { width, height, dpr }] = useDimensions();
   console.log(width, height, dpr);
 
   function addNode(nodes, node, x, y, px, py, xos) {
     xos = xos / 2;
 
-    nodes.push(<Circle x={x} y={y} text={node.value} />);
+    nodes.push(<Circle x={x} y={y} size={20} text={node.value} />);
     if (px !== null && py !== null) {
       nodes.push(<Line sx={x} sy={y} ex={px} ey={py} />);
     }
 
     if (node.left != null) {
-      addNode(nodes, node.left, x - xos, y + 100, x, y, xos);
+      addNode(nodes, node.left, x - xos, y + yOffset, x, y, xos);
     }
     if (node.right != null) {
-      addNode(nodes, node.right, x + xos, y + 100, x, y, xos);
+      addNode(nodes, node.right, x + xos, y + yOffset, x, y, xos);
     }
   }
 
@@ -73,6 +75,14 @@ const Tree = () => {
               </Button>
             </InputGroup.Append>
           </InputGroup>
+          <Button
+            variant="outline-secondary"
+            onClick={() => {
+              setYOffset(yOffset - 10)
+            }}
+          >
+          decrease y offset
+          </Button>
           <Canvas width={width} height={height} dpr={dpr} isAnimating={true}>
             {/*<Grid />*/}
             {nodes}
