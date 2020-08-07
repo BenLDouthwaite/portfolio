@@ -4,6 +4,7 @@ import Home from "./containers/Home";
 import Sandbox from "./containers/Sandbox";
 import Canvas from "./containers/CanvasPage";
 import Tree from "./containers/TreePage";
+import ThreeFiber from "./containers/ThreeFiber";
 
 export default function Routes() {
   return (
@@ -19,6 +20,9 @@ export default function Routes() {
       </Route>
       <Route exact path="/tree">
         <Tree />
+      </Route>
+      <Route exact path="/three-fiber">
+        <ThreeFiber />
       </Route>
     </Switch>
   );
