@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Canvas } from "../components/Canvas";
 import { useDimensions } from "../components/use-dimensions";
 import { Circle } from "../components/Circle";
-import { Grid } from "../components/Grid";
 import { Line } from "../components/Line";
 import BinaryTree from "../datastructures/binary-tree";
 import { Button, FormControl, InputGroup } from "react-bootstrap";

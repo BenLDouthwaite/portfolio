@@ -1,6 +1,6 @@
 import { useCanvas } from "./Canvas";
 
-export const Grid = ({}) => {
+export const Grid = () => {
   const context = useCanvas();
 
   const xTarget = 300;

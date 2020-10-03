@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap';
+import React from 'react'
 
 const Cell = ({position, value}) => {
   return (
@@ -81,18 +80,18 @@ const initBoard = () => {
 
 const randomiseBoardIndex = (board, boardIndex) => {
   if (board[boardIndex].value === undefined) {
-    var options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+//    var options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
     const columnIndex = boardIndex % 9
-    const column = columnCells(board, columnIndex)
-    const columnValues = column.filter(c => c.value !== undefined).map(c => c.value)
+//    const column = columnCells(board, columnIndex)
+//    const columnValues = column.filter(c => c.value !== undefined).map(c => c.value)
 
-    options = options.filter(n => !columnValues.includes(n))    
+//    options = options.filter(n => !columnValues.includes(n))
 
     const rowIndex = Math.floor(boardIndex / 9)
-    const row = rowCells(board, rowIndex)
-    const rowValues = row.filter(r => r.value !== undefined).map(c => c.value)
+//    const row = rowCells(board, rowIndex)
+//    const rowValues = row.filter(r => r.value !== undefined).map(c => c.value)
 
-    options = options.filter(n => !rowValues.includes(n))    
+//    options = options.filter(n => !rowValues.includes(n))
 
     const co = Math.floor(columnIndex / 3)
     const ro = rowIndex - (rowIndex % 3)
@@ -142,8 +141,9 @@ const boxCells = (board, boxIndex) => {
 
 const Sudoku = () => {
   
-  const [board, setBoard] = useState(initBoard());
-  
+//  const [board, setBoard] = useState(initBoard());
+  const board = initBoard();
+
   const boxes = []
   for (var i = 0; i < 9; i++) {
     boxes.push(<Box cells={boxCells(board, i)}/>)

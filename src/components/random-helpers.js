@@ -42,8 +42,6 @@ export const getRandomHexagon = ({ baseSize, baseHue, x, y }) => {
 };
 
 export const getHexagon = ({ width, height }) => {
-  const smallerSize = Math.min(width, height);
-
   console.log("W:", width, ". H:", height);
 
   return [
