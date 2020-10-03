@@ -27,6 +27,9 @@ function App() {
             <Nav.Link as={Link} to="/three-fiber">
               three-fiber
             </Nav.Link>
+            <Nav.Link as={Link} to="/sudoku">
+              sudoku
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
