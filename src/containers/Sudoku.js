@@ -1,6 +1,5 @@
 import React from "react";
 import { Board } from "../components/Board";
-import { shuffle } from "../utils/arrayUtils";
 import { initBoard } from "../utils/sudokuBoardGenerator";
 
 const Sudoku = () => {

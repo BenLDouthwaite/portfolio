@@ -95,37 +95,37 @@ const boxValues = (board, boxIndex) => {
   return boxCells(board, boxIndex).map(cell => cell.value)
 }
 
-const randomiseBoardIndex = (board, boardIndex) => {
-    if (board[boardIndex].value === undefined) {
-      var options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-      const columnIndex = boardIndex % 9
-      const column = columnCells(board, columnIndex)
-      const columnValues = column.filter(c => c.value !== undefined).map(c => c.value)
-  
-      options = options.filter(n => !columnValues.includes(n))
-  
-      const rowIndex = Math.floor(boardIndex / 9)
-      const row = rowCells(board, rowIndex)
-      const rowValues = row.filter(r => r.value !== undefined).map(c => c.value)
-  
-      options = options.filter(n => !rowValues.includes(n))
-  
-      const co = Math.floor(columnIndex / 3)
-      const ro = rowIndex - (rowIndex % 3)
-      const boxIndex = ro + co
-  
-      // console.log("BO", boardIndex, boxIndex, columnIndex, rowIndex, options)
-  
-      if (options.length === 0) {
-        console.log("NO OPTIONS TO ASSIGN. BAD LOGIC")
-        console.log("BO", boardIndex, boxIndex, columnIndex, rowIndex, options)
-        board[boardIndex].value = "??"
-      }
-      const rand = options[Math.floor(Math.random() * options.length)];
-      board[boardIndex].value = rand
-    } else {
-      // console.log("Other", board[boardIndex])
-    }
-  }
+//const randomiseBoardIndex = (board, boardIndex) => {
+//    if (board[boardIndex].value === undefined) {
+//      var options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+//      const columnIndex = boardIndex % 9
+//      const column = columnCells(board, columnIndex)
+//      const columnValues = column.filter(c => c.value !== undefined).map(c => c.value)
+//
+//      options = options.filter(n => !columnValues.includes(n))
+//
+//      const rowIndex = Math.floor(boardIndex / 9)
+//      const row = rowCells(board, rowIndex)
+//      const rowValues = row.filter(r => r.value !== undefined).map(c => c.value)
+//
+//      options = options.filter(n => !rowValues.includes(n))
+//
+//      const co = Math.floor(columnIndex / 3)
+//      const ro = rowIndex - (rowIndex % 3)
+//      const boxIndex = ro + co
+//
+//      // console.log("BO", boardIndex, boxIndex, columnIndex, rowIndex, options)
+//
+//      if (options.length === 0) {
+//        console.log("NO OPTIONS TO ASSIGN. BAD LOGIC")
+//        console.log("BO", boardIndex, boxIndex, columnIndex, rowIndex, options)
+//        board[boardIndex].value = "??"
+//      }
+//      const rand = options[Math.floor(Math.random() * options.length)];
+//      board[boardIndex].value = rand
+//    } else {
+//      // console.log("Other", board[boardIndex])
+//    }
+//  }
   
 export { initBoard }
