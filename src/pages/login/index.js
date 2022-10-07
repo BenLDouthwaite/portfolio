@@ -4,15 +4,12 @@ import { ACCESS_TOKEN, GITHUB_AUTH_URL } from "../../constants";
 import { getCurrentUser } from "../../util/APIUtils";
 
 export default function Login() {
-  const [user, setUser] = useState();
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
     getCurrentUser().then(
       (result) => {
-        console.log(result);
         setUserName(result["name"]);
-        setUser(result["name"]);
       },
       (error) => {
         console.log("Error getting user", error);
@@ -22,6 +19,7 @@ export default function Login() {
 
   function handleLogout() {
     localStorage.removeItem(ACCESS_TOKEN);
+    setUserName("");
     alert("You're safely logged out!");
   }
 
@@ -33,7 +31,13 @@ export default function Login() {
         Log in with Github
       </a>
       <button onClick={handleLogout}>Logout</button>
-      <div>Logged in as: {userName}</div>
+      <div>
+        {userName ? (
+          <div>Logged in as: {userName}</div>
+        ) : (
+          <div>not logged in</div>
+        )}
+      </div>
     </>
   );
 }

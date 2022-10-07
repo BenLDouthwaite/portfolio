@@ -7,7 +7,6 @@ export default function Tasks() {
   useEffect(() => {
     getTasks().then(
       (result) => {
-        console.log(result);
         setTasks(result);
       },
       (error) => {
